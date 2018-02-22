@@ -5,7 +5,8 @@ import Card from './components/Card';
 let youtubeURL = 'https://www.youtube.com/watch?v=';
 export default class App extends Component {
 	state = {
-		hello: 'world'
+		hello: 'world',
+		data: []
 	};
 
 	componentDidMount() {
@@ -17,10 +18,16 @@ export default class App extends Component {
 	}
 
 	render() {
+		let carousel = <div>Loading</div>;
+		if (this.state.data.length) {
+			carousel = this.state.data.map(data => (
+				<Card data={data} key={data.uuid} />
+			));
+		}
 		return (
 			<div>
-				<h1>Hello {this.state.hello}</h1>
-				<Card />
+				<h3>Top recomendations for you</h3>
+				{carousel}
 			</div>
 		);
 	}
