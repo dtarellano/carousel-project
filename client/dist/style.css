@@ -1,0 +1,10 @@
+.carousel {
+	position: fixed;
+	top: 40%;
+	left: 10%;
+}
+
+.card {
+	display: inline-block;
+	left: 40px;
+}
