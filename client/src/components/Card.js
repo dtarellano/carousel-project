@@ -1,9 +1,22 @@
 import React from 'react';
 
-const Card = () => (
-	<div className="card">
-		<h3>Card Component</h3>
-	</div>
-);
+let youtubeURL = 'https://www.youtube.com/watch?v=';
+const Card = props => {
+	let playCircle = null;
+	if (props.data.itemData.youtube_video) {
+		playCircle = <i className="material-icons">play_circle_outline</i>;
+	}
+
+	return (
+		<div className="card">
+			<img src={props.data.itemData.image} />
+			<p>{props.data.name}</p>
+			<p>{props.data.itemData.definingInfo}</p>
+
+			<i className="material-icons">favorite</i>
+			{playCircle}
+		</div>
+	);
+};
 
 export default Card;

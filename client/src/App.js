@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Card from './components/Card';
 
-let youtubeURL = 'https://www.youtube.com/watch?v=';
 export default class App extends Component {
 	state = {
 		hello: 'world',

@@ -1,10 +1,17 @@
+body {
+	background-color: #1c1a1b;
+	color: #ebebeb;
+}
+
 .carousel {
 	position: fixed;
-	top: 40%;
-	left: 10%;
 }
 
 .card {
 	display: inline-block;
-	left: 40px;
+}
+.card img {
+	width: 224px;
+	height: 283px;
+	padding-left: 40px;
 }
