@@ -76,12 +76,20 @@ export default class App extends Component {
 			});
 		}
 	}
-
+	handleLike(id) {
+		axios.post(`/items/${id}`, { rating: 'like' }).then(res => {
+			console.log(res);
+		});
+	}
 	render() {
 		let carousel = <div>Loading</div>;
 		if (this.state.data.length) {
 			carousel = this.state.display.map(data => (
-				<Card data={data} key={data.uuid} />
+				<Card
+					data={data}
+					handleLike={this.handleLike.bind(this)}
+					key={data.uuid}
+				/>
 			));
 		}
 		return (
