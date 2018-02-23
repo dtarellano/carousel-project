@@ -10,14 +10,19 @@ export default class App extends Component {
 	};
 
 	componentDidMount() {
-		axios.get('/items/?p=1&amt=16').then(data => {
+		axios.get('/items/?page=1&amt=16').then(data => {
 			this.setState({
 				data: data.data,
 				display: [data.data[0], data.data[1], data.data[2], data.data[3]]
 			});
 		});
 	}
-
+	leftArrow() {}
+	rightArrow() {
+		this.setState({
+			display: []
+		});
+	}
 	render() {
 		let carousel = <div>Loading</div>;
 		if (this.state.display.length) {
