@@ -6,32 +6,27 @@ export default class App extends Component {
 	state = {
 		hello: 'world',
 		data: [],
-		display: [],
-		start
+		display: []
 	};
-
-	constructor() {
-		super();
-		const { data, display, start } = this.state;
-	}
 
 	componentDidMount() {
 		axios.get('/items/?page=1&amt=16').then(data => {
 			this.setState({
 				data: data.data,
-				display: [data.data[0], data.data[1], data.data[2], data.data[3]]
+				display: [data.data[0], data.data[1], data.data[2], data.data[3]],
+				start: 0
 			});
 		});
 	}
-
 	leftArrow() {
-		let start = start;
-		if (start <= 0) {
-			start = data.length - 4;
+		let start = this.state.start;
+
+		if (this.state.start <= 0) {
+			start = this.state.data.length - 4;
 			this.setState(state => {
 				let display = [];
 				for (let i = start; i < start + 4; i++) {
-					display.push(data[i]);
+					display.push(this.state.data[i]);
 				}
 				return {
 					display,
@@ -43,7 +38,7 @@ export default class App extends Component {
 				let display = [];
 				start = start - 4;
 				for (let i = start; i < start + 4; i++) {
-					display.push(data[i]);
+					display.push(this.state.data[i]);
 				}
 				return {
 					display,
@@ -52,13 +47,33 @@ export default class App extends Component {
 			});
 		}
 	}
-
 	rightArrow() {
-		console.log('right arrow clicked');
-		if (this.state.start >= 15) {
-			this.setState({ start: 0 });
+		let start = this.state.start;
+
+		if (start >= this.state.data.length - 4) {
+			this.setState(state => {
+				let display = [];
+				start = 0;
+				for (let i = start; i < start + 4; i++) {
+					display.push(this.state.data[i]);
+				}
+				return {
+					display,
+					start
+				};
+			});
 		} else {
-			this.setState({ start: this.state.start + 4 });
+			this.setState(state => {
+				let display = [];
+				start = start + 4;
+				for (let i = start; i < start + 4; i++) {
+					display.push(this.state.data[i]);
+				}
+				return {
+					display,
+					start
+				};
+			});
 		}
 	}
 
