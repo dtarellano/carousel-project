@@ -31,7 +31,7 @@ A similar font can be found at https://fonts.google.com/specimen/Roboto
 
 to get items:
 
-`GET localhost:3000/items/?p=${page}&amt=${amt}`
+`GET localhost:3000/items/?page=${page}&amt=${amt}`
 
 where `page` is an integer representing page number, and `amt` is an integer
 representing the number of items per page.
