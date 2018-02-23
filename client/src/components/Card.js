@@ -15,7 +15,7 @@ const Card = props => {
 
 	return (
 		<div className="card">
-			<img src={props.data.itemData.image} />
+			<img src={props.data.itemData.image} alt={props.data.name} />
 			<p>{props.data.name}</p>
 			<p>{props.data.itemData.definingInfo}</p>
 			<i className="material-icons">favorite</i>

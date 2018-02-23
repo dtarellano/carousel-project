@@ -8,10 +8,14 @@ body {
 }*/
 
 .card {
+  width: 224px;
+  height: 283px;
 	display: inline-block;
+  padding-left: 40px;
 }
 .card img {
-	width: 224px;
-	height: 283px;
-	padding-left: 40px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+object-position: top;
 }
