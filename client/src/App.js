@@ -25,8 +25,8 @@ export default class App extends Component {
 	}
 	render() {
 		let carousel = <div>Loading</div>;
-		if (this.state.display.length) {
-			carousel = this.state.display.map(data => (
+		if (this.state.data.length) {
+			carousel = this.state.data.map(data => (
 				<Card data={data} key={data.uuid} />
 			));
 		}
