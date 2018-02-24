@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Card from './components/Card';
+import Carousel from './components/Carousel';
 
 export default class App extends Component {
 	state = {
@@ -95,7 +95,7 @@ export default class App extends Component {
 		return (
 			<div>
 				<h3>Top recomendations for you</h3>
-				<div className="carousel">{carousel}</div>
+				<Carousel data={this.state.data} />
 				<button onClick={() => this.leftArrow()}>Left</button>
 				<button onClick={() => this.rightArrow()}>Right</button>
 			</div>
