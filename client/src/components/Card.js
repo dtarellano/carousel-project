@@ -3,6 +3,11 @@ import React from 'react';
 let youtubeURL = 'https://www.youtube.com/watch?v=';
 const Card = props => {
 	let playCircle = null;
+
+	let show = 'none';
+	if (props.show) {
+		show = 'card';
+	}
 	if (props.data.itemData.youtube_video) {
 		playCircle = (
 			<a
@@ -15,7 +20,7 @@ const Card = props => {
 	}
 
 	return (
-		<div className="card">
+		<div className={show}>
 			<img src={props.data.itemData.image} alt={props.data.name} />
 			<p>{props.data.name}</p>
 			<p>{props.data.itemData.definingInfo}</p>

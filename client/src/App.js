@@ -19,60 +19,24 @@ export default class App extends Component {
 		});
 	}
 	leftArrow() {
-		let start = this.state.start;
-
-		if (this.state.start <= 0) {
-			start = this.state.data.length - 4;
-			this.setState(state => {
-				let display = [];
-				for (let i = start; i < start + 4; i++) {
-					display.push(this.state.data[i]);
-				}
-				return {
-					display,
-					start
-				};
+		if (this.state.start === 0) {
+			this.setState({
+				start: 12
 			});
 		} else {
-			this.setState(state => {
-				let display = [];
-				start = start - 4;
-				for (let i = start; i < start + 4; i++) {
-					display.push(this.state.data[i]);
-				}
-				return {
-					display,
-					start
-				};
+			this.setState({
+				start: this.state.start - 4
 			});
 		}
 	}
 	rightArrow() {
-		let start = this.state.start;
-
-		if (start >= this.state.data.length - 4) {
-			this.setState(state => {
-				let display = [];
-				start = 0;
-				for (let i = start; i < start + 4; i++) {
-					display.push(this.state.data[i]);
-				}
-				return {
-					display,
-					start
-				};
+		if (this.state.start === 12) {
+			this.setState({
+				start: 0
 			});
 		} else {
-			this.setState(state => {
-				let display = [];
-				start = start + 4;
-				for (let i = start; i < start + 4; i++) {
-					display.push(this.state.data[i]);
-				}
-				return {
-					display,
-					start
-				};
+			this.setState({
+				start: this.state.start + 4
 			});
 		}
 	}
@@ -84,18 +48,12 @@ export default class App extends Component {
 	render() {
 		let carousel = <div>Loading</div>;
 		if (this.state.data.length) {
-			carousel = this.state.display.map(data => (
-				<Card
-					data={data}
-					handleLike={this.handleLike.bind(this)}
-					key={data.uuid}
-				/>
-			));
+			carousel = <Carousel data={this.state.data} />;
 		}
 		return (
 			<div>
 				<h3>Top recomendations for you</h3>
-				<Carousel data={this.state.data} />
+				<Carousel data={this.state.data} start={this.state.start} />
 				<button onClick={() => this.leftArrow()}>Left</button>
 				<button onClick={() => this.rightArrow()}>Right</button>
 			</div>
