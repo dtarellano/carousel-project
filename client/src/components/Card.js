@@ -24,7 +24,7 @@ const Card = props => {
 			<img src={props.data.itemData.image} alt={props.data.name} />
 			<p>{props.data.name}</p>
 			<p>{props.data.itemData.definingInfo}</p>
-			<a onClick={() => props.handleLike(props.data.uuid)}>
+			<a onClick={() => props.handleLike(props.data.uuid, props.index)}>
 				<i className="material-icons">favorite</i>
 			</a>
 

@@ -7,7 +7,6 @@ const Carousel = props => {
 	return (
 		<div className="carousel">
 			{props.data.map((data, index) => {
-				console.log(props.start);
 				if (index >= props.start && slides < 5) {
 					show = true;
 					slides++;
@@ -15,7 +14,15 @@ const Carousel = props => {
 				if (slides === 5) {
 					show = false;
 				}
-				return <Card data={data} show={show} key={data.uuid} />;
+				return (
+					<Card
+						data={data}
+						index={index}
+						show={show}
+						key={data.uuid}
+						handleLike={props.handleLike}
+					/>
+				);
 			})}
 		</div>
 	);
