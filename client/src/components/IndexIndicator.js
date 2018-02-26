@@ -15,9 +15,3 @@ const IndexIndicator = props => {
 };
 
 export default IndexIndicator;
-{
-	/* <i class="material-icons">panorama_fish_eye</i> */
-}
-{
-	/* <i class="material-icons">lens</i> */
-}
