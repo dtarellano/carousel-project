@@ -9,8 +9,6 @@ const IndexIndicator = props => {
 			indicator.push(<i class="material-icons">panorama_fish_eye</i>);
 		}
 	}
-
-	for (let i = 0; i < 4; i++) {}
 	return <div>{indicator}</div>;
 };
 
