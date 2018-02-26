@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import Carousel from './components/Carousel';
+import IndexIndicator from './components/IndexIndicator';
 
 export default class App extends Component {
 	state = {
@@ -18,29 +20,34 @@ export default class App extends Component {
 				data: data.data,
 				display: [data.data[0], data.data[1], data.data[2], data.data[3]],
 				start: 0,
-				sliceAt: 18
+				sliceAt: 18,
+				indicator: 1
 			});
 		});
 	}
 	leftArrow() {
 		if (this.state.start === 0) {
 			this.setState({
-				start: 12
+				start: 12,
+				indicator: 4
 			});
 		} else {
 			this.setState({
-				start: this.state.start - 4
+				start: this.state.start - 4,
+				indicator: this.state.indicator - 1
 			});
 		}
 	}
 	rightArrow() {
 		if (this.state.start === 12) {
 			this.setState({
-				start: 0
+				start: 0,
+				indicator: 1
 			});
 		} else {
 			this.setState({
-				start: this.state.start + 4
+				start: this.state.start + 4,
+				indicator: this.state.indicator + 1
 			});
 		}
 	}
@@ -66,6 +73,7 @@ export default class App extends Component {
 		return (
 			<div>
 				<h3>Top recomendations for you</h3>
+				<IndexIndicator indicator={this.state.indicator} />
 				<Carousel
 					data={this.state.data}
 					start={this.state.start}
@@ -76,4 +84,10 @@ export default class App extends Component {
 			</div>
 		);
 	}
+}
+{
+	/* <i class="material-icons">navigate_before</i> */
+}
+{
+	/* <i class="material-icons">navigate_next</i> */
 }
