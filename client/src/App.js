@@ -7,9 +7,7 @@ import IndexIndicator from './components/IndexIndicator';
 
 export default class App extends Component {
 	state = {
-		hello: 'world',
 		data: [],
-		display: [],
 		show: true,
 		start: 0,
 		indicator: 1
@@ -24,13 +22,11 @@ export default class App extends Component {
 		axios.get('/items/?page=1&amt=16').then(data => {
 			this.setState({
 				data: data.data,
-				display: [data.data[0], data.data[1], data.data[2], data.data[3]],
 				sliceAt: 18
 			});
 		});
 	}
 	leftArrow() {
-		console.log('left arrow');
 		if (this.state.start === 0) {
 			this.setState({
 				start: 12,
@@ -69,7 +65,6 @@ export default class App extends Component {
 				rating: 'like'
 			})
 			.then(res => {
-				console.log(res);
 				if (res.status === 200) {
 					axios.get(`/items/?page=${sliceAt}&amt=1`).then(res => {
 						let newItem = res.data[0];
@@ -106,8 +101,6 @@ export default class App extends Component {
 							data={this.state.data}
 							start={this.state.start}
 							handleLike={this.handleLike}
-							leftArrow={this.leftArrow}
-							rightArrow={this.rightArrow}
 						/>
 					</ReactCSSTransitionReplace>
 

@@ -3,20 +3,6 @@ import ReactCSSTransitionReplace from 'react-css-transition-replace';
 
 import Card from './Card';
 
-const duration = 300;
-
-const defaultStyle = {
-	transition: `opacity ${duration}ms ease-in-out`,
-	opacity: 0,
-	padding: 20,
-	display: 'inline-block'
-};
-
-const transitionStyles = {
-	entering: { opacity: 0 },
-	entered: { opacity: 1 }
-};
-
 const Carousel = props => {
 	let carousel = [];
 	let start = props.start;
@@ -29,7 +15,6 @@ const Carousel = props => {
 					index={start}
 					key={props.data[start].uuid}
 					handleLike={props.handleLike}
-					show={true}
 				/>
 			);
 			start++;
