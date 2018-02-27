@@ -25,9 +25,13 @@ Icons can be found at http://google.github.io/material-design-icons/
 
 A similar font can be found at https://fonts.google.com/specimen/Roboto
 
-## To run the API server:
+## To run the API server and Client:
 
-`npm install && npm run start`
+`npm install`
+
+`npm run prod`
+
+`npm run start`
 
 to get items:
 
@@ -46,9 +50,8 @@ body: {
 }
 ```
 
-** The server is reading and writing from disc memory, so there are a limited
+\*\* The server is reading and writing from disc memory, so there are a limited
 number of items available, and it won't save your ratings once it restarts!
-
 
 ## Submitting the completed assignment
 
