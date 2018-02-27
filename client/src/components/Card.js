@@ -2,11 +2,16 @@ import React from 'react';
 
 const youtubeURL = 'https://www.youtube.com/watch?v=';
 const Card = props => {
+	let image = props.data.itemData.image;
 	let playCircle = null;
 	let name = props.data.name;
 
 	if (props.data.name.length > 18) {
 		name = name.slice(0, 18) + '...';
+	}
+
+	if (!props.data.itemData.image) {
+		image = './images/noImage.jpg';
 	}
 	if (props.data.itemData.youtube_video) {
 		playCircle = (
@@ -21,7 +26,7 @@ const Card = props => {
 
 	return (
 		<div className="card">
-			<img src={props.data.itemData.image} alt={props.data.name} />
+			<img src={image} alt={props.data.name} />
 			{playCircle}
 			<a onClick={() => props.handleLike(props.data.uuid, props.index)}>
 				<i className="material-icons favorite">favorite</i>
