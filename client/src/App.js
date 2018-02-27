@@ -64,15 +64,19 @@ export default class App extends Component {
 		let data = this.state.data;
 		let sliceAt = this.state.sliceAt;
 		data.splice(index, 1);
-		axios.get(`/items/?page=${sliceAt}&amt=1`).then(res => {
-			let newItem = res.data[0];
-			data.push(newItem);
-			this.setState({
-				data,
-				sliceAt: sliceAt + 1
-			});
+		axios.post(`/items/${id}`).then(res => {
+			console.log(res);
+			if (res.statusCode === 200) {
+				axios.get(`/items/?page=${sliceAt}&amt=1`).then(res => {
+					let newItem = res.data[0];
+					data.push(newItem);
+					this.setState({
+						data,
+						sliceAt: sliceAt + 1
+					});
+				});
+			}
 		});
-		console.log(data);
 	}
 	render() {
 		let carousel = <div>Loading</div>;
@@ -110,10 +114,4 @@ export default class App extends Component {
 			</div>
 		);
 	}
-}
-{
-	/* <i class="material-icons">navigate_before</i> */
-}
-{
-	/* <i class="material-icons">navigate_next</i> */
 }
