@@ -6,7 +6,7 @@ body {
 .title {
 	font-size: 34px;
 	margin-bottom: 0px;
-	margin-left: 72px;
+	margin-left: 100px;
 }
 .carousel {
 	position: initial;
@@ -39,11 +39,13 @@ body {
 	height: 100%;
 	object-fit: cover;
 	object-position: top;
+	box-shadow: 6px 6px 13px 0px black;
 }
 .play {
 	position: absolute;
 	left: 50%;
 	top: 50%;
+	line-height: 40px;
 	font-size: 40px !important;
 	text-decoration: none;
 	color: white;
@@ -91,17 +93,23 @@ body {
 
 .left-arrow {
 	float: left;
-	margin-top: 14%;
+	margin-top: 13%;
 }
 
 .left-arrow i {
-	font-size: 32px !important;
+	font-size: 60px !important;
+	line-height: 32px;
+	left: 20px;
+	position: relative;
 }
 .right-arrow {
 	float: right;
-	margin-top: -17%;
+	position: relative;
+	left: 60px;
+	top: -226px;
 }
 
 .right-arrow i {
-	font-size: 32px !important;
+	font-size: 64px !important;
+	line-height: 32px;
 }
