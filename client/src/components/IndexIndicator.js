@@ -17,7 +17,7 @@ const IndexIndicator = props => {
 			);
 		}
 	}
-	return <div>{indicator}</div>;
+	return <div className="indicator">{indicator}</div>;
 };
 
 export default IndexIndicator;

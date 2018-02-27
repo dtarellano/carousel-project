@@ -36,7 +36,7 @@ const Carousel = props => {
 			i++;
 		}
 	}
-	return <div>{carousel}</div>;
+	return <div className="carousel">{carousel}</div>;
 };
 
 export default Carousel;

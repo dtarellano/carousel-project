@@ -10,34 +10,38 @@ export default class App extends Component {
 		hello: 'world',
 		data: [],
 		display: [],
-		show: true
+		show: true,
+		start: 0,
+		indicator: 1
 	};
 	constructor() {
 		super();
 		this.handleLike = this.handleLike.bind(this);
-		this.viewToggle = this.viewToggle.bind(this);
+		this.leftArrow = this.leftArrow.bind(this);
+		this.rightArrow = this.rightArrow.bind(this);
 	}
 	componentDidMount() {
 		axios.get('/items/?page=1&amt=16').then(data => {
 			this.setState({
 				data: data.data,
 				display: [data.data[0], data.data[1], data.data[2], data.data[3]],
-				start: 0,
-				sliceAt: 18,
-				indicator: 1
+				sliceAt: 18
 			});
 		});
 	}
 	leftArrow() {
+		console.log('left arrow');
 		if (this.state.start === 0) {
 			this.setState({
 				start: 12,
-				indicator: 4
+				indicator: 4,
+				show: !this.state.show
 			});
 		} else {
 			this.setState({
 				start: this.state.start - 4,
-				indicator: this.state.indicator - 1
+				indicator: this.state.indicator - 1,
+				show: !this.state.show
 			});
 		}
 	}
@@ -55,9 +59,6 @@ export default class App extends Component {
 				show: !this.state.show
 			});
 		}
-	}
-	viewToggle() {
-		this.setState({ show: !this.state.show });
 	}
 	handleLike(id, index) {
 		let data = this.state.data;
@@ -80,25 +81,32 @@ export default class App extends Component {
 		}
 		return (
 			<div>
-				<h3>Top recomendations for you</h3>
+				<p className="title">Top recomendations for you</p>
 				<IndexIndicator indicator={this.state.indicator} />
-				<ReactCSSTransitionReplace
-					transitionName="fade-wait"
-					transitionEnterTimeout={1000}
-					transitionLeaveTimeout={400}
-				>
-					<Carousel
-						key={this.state.show}
-						data={this.state.data}
-						start={this.state.start}
-						handleLike={this.handleLike}
-						show={!!this.state.show}
-						viewToggle={this.viewToggle}
-					/>
-				</ReactCSSTransitionReplace>
 
-				<button onClick={() => this.leftArrow()}>Left</button>
-				<button onClick={() => this.rightArrow()}>Right</button>
+				<div className="container">
+					<a className="left-arrow" onClick={() => this.leftArrow()}>
+						<i className="material-icons">chevron_left</i>
+					</a>
+					<ReactCSSTransitionReplace
+						transitionName="fade-wait"
+						transitionEnterTimeout={1000}
+						transitionLeaveTimeout={400}
+					>
+						<Carousel
+							key={this.state.show}
+							data={this.state.data}
+							start={this.state.start}
+							handleLike={this.handleLike}
+							leftArrow={this.leftArrow}
+							rightArrow={this.rightArrow}
+						/>
+					</ReactCSSTransitionReplace>
+
+					<a className="right-arrow" onClick={() => this.rightArrow()}>
+						<i className="material-icons">chevron_right</i>
+					</a>
+				</div>
 			</div>
 		);
 	}
