@@ -1,5 +1,21 @@
 import React from 'react';
+import ReactCSSTransitionReplace from 'react-css-transition-replace';
+
 import Card from './Card';
+
+const duration = 300;
+
+const defaultStyle = {
+	transition: `opacity ${duration}ms ease-in-out`,
+	opacity: 0,
+	padding: 20,
+	display: 'inline-block'
+};
+
+const transitionStyles = {
+	entering: { opacity: 0 },
+	entered: { opacity: 1 }
+};
 
 const Carousel = props => {
 	let carousel = [];
@@ -20,7 +36,7 @@ const Carousel = props => {
 			i++;
 		}
 	}
-	return <div className="carousel">{carousel}</div>;
+	return <div>{carousel}</div>;
 };
 
 export default Carousel;
